@@ -35,6 +35,18 @@
 	}
 
 	function fragmentScroll(element, options) {
+		
+		
+		// handle hash in url
+		var fragment = window.location.hash;
+		if (fragment) {
+			var frame = $(options.frame);
+
+			frame.animate({
+					scrollTop: $(fragment).offset().top + $(options.frame).offset().top - options.offset
+				}, options.speed, options.easing);
+		}
+
 		// On click event
 		$(element).find('[href^="#"]').on('click', function(event) {
 			// Prevent default behavior
